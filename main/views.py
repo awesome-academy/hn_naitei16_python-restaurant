@@ -290,7 +290,7 @@ def checkout(request):
     return render(request, 'cart/checkout.html', context)
 
 @login_required
-def handle_checkout(request, id):
+def handle_checkout(request, id=0):
     if request.method == "POST":
         final_price = request.POST.get('fprice')
         inputName = request.POST.get('inputName')
