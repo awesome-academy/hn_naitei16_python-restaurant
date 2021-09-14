@@ -13,6 +13,7 @@ from django.db import transaction
 from django.core import serializers
 from django.conf import settings
 from django.forms.models import model_to_dict
+from django.utils import timezone
 import functools
 import copy
 import json
@@ -420,10 +421,11 @@ def handle_payment(request):
             try:
                 client.payment.capture(rzp_payment_id, amount)
                 purchased = get_object_or_404(Status, name='purchased')
+                order_db.order_date = timezone.now()
                 order_db.status = purchased
                 order_db.save()
                 extra = {
-                    'order_id': order_db.rzp_id,
+                    'order_id': order_db.id,
                 }
                 return render(request, 'cart/payment_success.html', extra)
             except:
@@ -487,3 +489,15 @@ def remove_from_wishlist(request, id):
             "success": success,
         }
         return JsonResponse(context)
+
+@login_required
+def receipt(request, id):
+    bill = Bill.objects.prefetch_related('item_set').filter(user=request.user, id=id).first()
+    if bill.user == request.user:
+        context = {
+            'bill': bill,
+            'items': bill.item_set.all(),
+        }
+        return render(request, 'cart/receipt.html', context)
+    else:
+        return HttpResponse("403 Forbidden")

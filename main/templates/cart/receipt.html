@@ -1,0 +1,80 @@
+{% extends "base_generic.html" %}
+{% load i18n %}
+{% load static %}
+
+{% block title %}
+    {% translate "OnlineRestaurant | Receipt" %}
+{% endblock %}
+
+{% block fbgnav %}
+    nav-fbg
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div id="inv-bill" class="invoice-card">
+        <div class="invoice-title">
+            <div id="main-title">
+                <h4>{% translate "RECEIPT" %}</h4>
+                <span>#{{ bill.id }}</span>
+            </div>
+            <span id="date">{{ bill.order_date }}</span>
+        </div>
+        
+        <div class="invoice-details">
+            <table class="invoice-table">
+                <thead>
+                    <tr>
+                        <td>{% translate "FOOD" %}</td>
+                        <td class="text-center">{% translate "QTY" %}</td>
+                        <td>{% translate "PRICE" %}</td>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for item in items %}
+                        <tr class="row-data">
+                            <td>{{ item.food.name }}</td>
+                            <td class="text-center">{{ item.quantity }}</td>
+                            <td >${{ item.unit_price }}</td>
+                        </tr>
+                    {% endfor %}
+                
+                    <tr class="calc-row">
+                        <td>{% translate "Total" %}</td>
+                        <td colspan="2">${{ bill.total }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="invoice-border">
+            <div class="invoice-dets">
+                <b>{% translate "RECIPIENT" %}</b>
+                <p>{{ bill.recipient }}</p>
+            </div>
+            <div class="invoice-dets">
+                <b>{% translate "ADDRESS" %}</b>
+                <p>{{ bill.address|title }}. <br>{% translate "City" %}: {{ bill.city|title }} | {% translate "Country" %}: {{ bill.country|title }} | {% translate "Zip" %}: {{ bill.zip_code }}</p>
+            </div>
+            <div class="invoice-dets">
+                <b>{% translate "PHONE NO." %}</b>
+                <p>{{ bill.phone_number }}</p>
+            </div>
+        </div>
+        
+        <div class="invoice-border">
+            <h3>{% translate "THANK YOU" %}</h3>
+        </div>
+        
+        <div class="invoice-footer">
+            <a class="btn btn-success" href="{{ request.META.HTTP_REFERER }}">{% translate "Back" %}</a>
+            <button class="btn btn-info">{% translate "Re-Order" %}</button>
+            <button class="btn btn-primary" id="print-receipt">{% translate "Print Receipt" %}</button>
+        </div>
+    </div>
+    <iframe name="print_frame" width="0" height="0" frameborder="0" src="about:blank"></iframe>
+{% endblock %}
