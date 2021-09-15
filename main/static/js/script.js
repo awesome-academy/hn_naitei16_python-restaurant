@@ -611,4 +611,18 @@ $(document).ready(function(){
             });
         }
     });
+    
+    $("#print-receipt").on('click', function(){
+        printDivCSS = new String(`<link rel="stylesheet" href="/static/css/all.min.css">`);
+        printDivCSS2 = new String(`<link rel="stylesheet" href="/static/css/styles.css">`);
+        printDivCSS3 = new String(`<link rel="stylesheet" href="/static/css/bootstrap.min.css">`);
+        var bill = $('#inv-bill')[0].children;
+        window.frames["print_frame"].document.body.innerHTML = printDivCSS + printDivCSS2 + printDivCSS3;
+        Array.from(bill).forEach((row, idx) => {
+            if (idx == 4) return;
+            window.frames["print_frame"].document.body.innerHTML += row.innerHTML;
+        });
+        window.frames["print_frame"].window.focus();
+        window.frames["print_frame"].window.print();
+    });
 });

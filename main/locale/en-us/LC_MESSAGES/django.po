@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-09-09 09:34+0700\n"
+"POT-Creation-Date: 2021-09-14 01:37+0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -268,12 +268,12 @@ msgid "Phone Number"
 msgstr ""
 
 #: templates/accounts/profile.html:202 templates/accounts/profile.html:203
-#: templates/cart/checkout.html:39
+#: templates/cart/checkout.html:39 templates/cart/receipt.html:61
 msgid "City"
 msgstr ""
 
 #: templates/accounts/profile.html:208 templates/accounts/profile.html:209
-#: templates/cart/checkout.html:43
+#: templates/cart/checkout.html:43 templates/cart/receipt.html:61
 msgid "Country"
 msgstr ""
 
@@ -294,6 +294,7 @@ msgid "Items"
 msgstr ""
 
 #: templates/accounts/profile.html:247 templates/cart/cart.html:31
+#: templates/cart/receipt.html:47
 msgid "Total"
 msgstr ""
 
@@ -325,7 +326,7 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: templates/accounts/profile.html:282
+#: templates/accounts/profile.html:282 templates/cart/receipt.html:75
 msgid "Re-Order"
 msgstr ""
 
@@ -473,7 +474,7 @@ msgstr ""
 msgid "Destination Country"
 msgstr ""
 
-#: templates/cart/checkout.html:47
+#: templates/cart/checkout.html:47 templates/cart/receipt.html:61
 msgid "Zip"
 msgstr ""
 
@@ -543,6 +544,50 @@ msgstr ""
 
 #: templates/cart/payment_success.html:20
 msgid "Show Receipt"
+msgstr ""
+
+#: templates/cart/receipt.html:6
+msgid "OnlineRestaurant | Receipt"
+msgstr ""
+
+#: templates/cart/receipt.html:21
+msgid "RECEIPT"
+msgstr ""
+
+#: templates/cart/receipt.html:31
+msgid "FOOD"
+msgstr ""
+
+#: templates/cart/receipt.html:32
+msgid "QTY"
+msgstr ""
+
+#: templates/cart/receipt.html:33
+msgid "PRICE"
+msgstr ""
+
+#: templates/cart/receipt.html:56
+msgid "RECIPIENT"
+msgstr ""
+
+#: templates/cart/receipt.html:60
+msgid "ADDRESS"
+msgstr ""
+
+#: templates/cart/receipt.html:64
+msgid "PHONE NO."
+msgstr ""
+
+#: templates/cart/receipt.html:70
+msgid "THANK YOU"
+msgstr ""
+
+#: templates/cart/receipt.html:74
+msgid "Back"
+msgstr ""
+
+#: templates/cart/receipt.html:76
+msgid "Print Receipt"
 msgstr ""
 
 #: templates/foods/details.html:6
@@ -770,26 +815,26 @@ msgstr ""
 msgid "Menu"
 msgstr ""
 
-#: views.py:79
+#: views.py:80
 msgid "Your account has been created! You can login now"
 msgstr ""
 
-#: views.py:231
+#: views.py:232
 msgid "Your password was successfully updated."
 msgstr ""
 
-#: views.py:244
+#: views.py:245
 msgid "Your phone number is invalid."
 msgstr ""
 
-#: views.py:247
+#: views.py:248
 msgid "Your information was succesfully updated."
 msgstr ""
 
-#: views.py:342
+#: views.py:343
 msgid "Bill checkout processing failed."
 msgstr ""
 
-#: views.py:484
+#: views.py:486
 msgid "Failed removing item from wishlist."
 msgstr ""
